@@ -12,7 +12,7 @@ function App() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/todos');
+      const response = await axios.get('http://3.86.52.203:5000/api/todos');
       setTodos(response.data);
     } catch (error) {
       console.error('Todo listesi alınamadı:', error);
@@ -24,7 +24,7 @@ function App() {
     if (!newTodo.trim()) return;
 
     try {
-      const response = await axios.post('http://localhost:5000/api/todos', {
+      const response = await axios.post('http://3.86.52.203:5000/api/todos', {
         title: newTodo
       });
       setTodos([...todos, response.data]);
@@ -36,7 +36,7 @@ function App() {
 
   const toggleTodo = async (id) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/todos/${id}`);
+      const response = await axios.put(`http://3.86.52.203:5000/api/todos/${id}`);
       setTodos(todos.map(todo => 
         todo._id === id ? response.data : todo
       ));
@@ -47,7 +47,7 @@ function App() {
 
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/todos/${id}`);
+      await axios.delete(`http://3.86.52.203:5000/api/todos/${id}`);
       setTodos(todos.filter(todo => todo._id !== id));
     } catch (error) {
       console.error('Todo silinemedi:', error);
